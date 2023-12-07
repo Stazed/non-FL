@@ -37,6 +37,7 @@ public:
     Fl_Sometimes_Input ( int X, int Y, int W, int H, const char *L=0 )
         : Fl_Input( X, Y, W, H, L )
         {
+            _text = NULL;
             clear_visible_focus();
             up_box( FL_NO_BOX );
             when(FL_WHEN_ENTER_KEY);
