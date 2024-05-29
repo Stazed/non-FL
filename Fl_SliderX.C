@@ -98,7 +98,7 @@ Fl_SliderX::draw ( int X, int Y, int W, int H)
             fl_translate( xsl, ysl + (hh/2) );
       
 #ifdef FLTK_SUPPORT
-        fl_color( FL_WHITE );
+        fl_color( FL_DARK1 );
 #else
         fl_color( fl_color_add_alpha( FL_WHITE, 127 ));
 #endif
