@@ -21,6 +21,7 @@
 #include <FL/Fl.H>
 #include <FL/Fl_Window.H>
 #include <FL/Fl_Preferences.H>
+#include <string>
 
 Fl_Theme *Fl_Theme::first;
 Fl_Theme *Fl_Theme::_current;
@@ -115,9 +116,12 @@ conf_get_color ( const char *key, Fl_Color def )
 int
 Fl_Theme::load_default ( void )
 {
-    const char *name = conf_get( "theme", "clean" );
+    std::string name(conf_get( "theme", "clean" ));
+    
+    if( !strcmp(name.c_str(), "Cairo") || !strcmp(name.c_str(), "Vector" ))
+        name = "clean";
 
-    int rv = set( name );
+    int rv = set( name.c_str() );
 
     Fl_Color_Scheme::set( "Dark" );
 
