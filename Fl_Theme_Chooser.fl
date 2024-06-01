@@ -54,7 +54,7 @@ return Fl_Button::handle( m );} {}
 }
 
 widget_class Fl_Theme_Chooser {
-  label Theme open selected
+  label Theme open
   xywh {610 327 435 380} type Double
   class Fl_Double_Window visible
 } {
@@ -180,9 +180,4 @@ w->show();
 
 while( w->shown() )
   Fl::wait();} {}
-}
-
-Function {fl_apply_theme()} {open C return_type void
-} {
-  code {Fl_Theme::load_default();} {}
 }

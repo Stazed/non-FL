@@ -123,3 +123,5 @@ public:
     static int set ( const char *name );
     static const Fl_Theme *current ( void ) { return _current; }
 };
+
+extern "C" { void fl_apply_theme(); }

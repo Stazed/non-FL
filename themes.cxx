@@ -120,4 +120,7 @@ void fl_register_themes ( void )
                                                   (Fl_Color)Fl::get_color( FL_SELECTION_COLOR  ));
         Fl_Color_Scheme::add( o );
     }
+
+    // Get and set the theme for this instance
+    fl_apply_theme();
 }

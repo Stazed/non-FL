@@ -235,7 +235,3 @@ void fl_theme_chooser() {
   while( w->shown() )
     Fl::wait();
 }
-
-void fl_apply_theme() {
-  Fl_Theme::load_default();
-}

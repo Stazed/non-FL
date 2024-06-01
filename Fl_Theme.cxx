@@ -241,7 +241,6 @@ Fl_Color_Scheme::set ( const char *name )
     return 0;
 }
 
-
-
-
-
+void fl_apply_theme() {
+  Fl_Theme::load_default();
+}

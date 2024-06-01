@@ -58,5 +58,4 @@ public:
   Fl_Color_Button *selection_color_button;
 };
 extern "C" { void fl_theme_chooser(); }
-extern "C" { void fl_apply_theme(); }
 #endif
