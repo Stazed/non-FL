@@ -172,11 +172,12 @@ Fl_Panzoomer::draw_cursor ( int X, int Y, int W, int H )
 
     cursor_bounds( cx,cy,cw,ch );
 
-    fl_rectf( cx,cy,cw,ch,  FL_WHITE );
+    /* For FLTK - no alpha so two pixel wide rectangle */
+    fl_rect( cx,cy,cw,ch, FL_WHITE );
+    fl_rect( cx+1,cy+1,cw-2,ch-2, FL_WHITE );
 
-    fl_rect( cx,cy,cw,ch,   FL_GRAY0 );
+    // This was for NTK, but this panzoomer is for FLTK only
 //    fl_rectf( cx,cy,cw,ch, fl_color_add_alpha( FL_WHITE, 40 ));
-
 //    fl_rect( cx,cy,cw,ch,  fl_color_add_alpha( FL_WHITE, 200 ));
 }
 
