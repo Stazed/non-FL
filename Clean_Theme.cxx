@@ -35,7 +35,7 @@ static void clean_color(Fl_Color c)
         fl_color(fl_inactive(c));
 }
 
-static Fl_Color border_color (Fl_Color c)
+static Fl_Color border_color (Fl_Color /*c*/)
 {
     return fl_color_average( FL_BLACK, FL_BACKGROUND_COLOR,0.70f);
 }
@@ -76,10 +76,12 @@ static void down_box(int x, int y, int w, int h, Fl_Color c)
     rect(x, y, w, h, border_color( c ));
 }
 
+/*
 static void flat_box( int x, int y, int w, int h, Fl_Color c )
 {
     rectf( x, y, w, h, c );
 }
+*/
 
 static void border_box( int x, int y, int w, int h, Fl_Color c )
 {

@@ -159,7 +159,7 @@ Fl_Panzoomer::draw ( int X, int Y, int W, int H )
 }
 
 void
-Fl_Panzoomer::draw_background ( int X, int Y, int W, int H )
+Fl_Panzoomer::draw_background ( int /*X*/, int /*Y*/, int /*W*/, int /*H*/ )
 {
 }
 

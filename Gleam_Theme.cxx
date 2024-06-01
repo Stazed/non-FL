@@ -32,7 +32,7 @@ static void gleam_color(Fl_Color c)
 	else
 		fl_color(fl_inactive(c));
 }
-static void frame_rect(int x, int y, int w, int h, Fl_Color bc)
+static void frame_rect(int x, int y, int w, int h, Fl_Color /*bc*/)
 {
 
 	// Draw the outline around the perimeter of the box
