@@ -60,7 +60,7 @@ static void shade_rect_up(int x, int y, int w, int h, Fl_Color bc)
     }
 
     gleam_color(bc);
-    fl_rectf( x, y + j, x + w - 1, h - j );
+    fl_rectf( x, y + j, w - 1, h - j );
 }
 
 static void frame_rect_up(int x, int y, int w, int h, Fl_Color bc)
