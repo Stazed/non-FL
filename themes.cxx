@@ -27,7 +27,7 @@
 
 static bool themes_registered = 0;
 
-void fl_register_themes ( void )
+void fl_register_themes ( std::string path )
 {
     if ( themes_registered )
         return;
@@ -122,5 +122,5 @@ void fl_register_themes ( void )
     }
 
     // Get and set the theme for this instance
-    fl_apply_theme();
+    fl_apply_theme(path);
 }

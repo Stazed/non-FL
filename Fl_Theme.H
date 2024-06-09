@@ -20,6 +20,7 @@
 #pragma once
 
 #include <FL/Fl.H>
+#include <string>
 
 /* class Fl_Theme  */
 /* { */
@@ -101,7 +102,7 @@ class Fl_Theme
     void (*_init_func)(void);
 
     static void refresh ( void );
-
+    
 public:
 
     const char *name ( void ) const { return _name; }
@@ -119,9 +120,9 @@ public:
     static void save ( void );
     static void add ( Fl_Theme *td );
     static Fl_Theme **get ( void );
-    static int load_default ( void );
+    static int load_default ( std::string path );
     static int set ( const char *name );
     static const Fl_Theme *current ( void ) { return _current; }
 };
 
-extern "C" { void fl_apply_theme(); }
+extern "C" { void fl_apply_theme(std::string path); }

@@ -21,4 +21,4 @@
 
 #include "Fl_Theme.H"
 
-void fl_register_themes ( void );
+void fl_register_themes ( std::string path );

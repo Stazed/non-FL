@@ -28,6 +28,8 @@ Fl_Theme *Fl_Theme::_current;
 Fl_Color_Scheme *Fl_Color_Scheme::first;
 Fl_Color_Scheme *Fl_Color_Scheme::_current;
 
+static std::string s_path;  // .non-mixer-xt, .non-timeline-xt 
+
 int Fl_Theme::total;
 int Fl_Color_Scheme::total;
 
@@ -59,9 +61,9 @@ Fl_Preferences *prefs ( void )
 {
     char path[512];
 
-    snprintf( path, sizeof(path), "%s/.config/ntk/", getenv("HOME" )  );
+    snprintf( path, sizeof(path), "%s/.config/%s", getenv("HOME" ), s_path.c_str() );
     
-    Fl_Preferences *p = new Fl_Preferences( path, "ntk", "theme" );
+    Fl_Preferences *p = new Fl_Preferences( path, "FLTK", "theme" );
 
     return p;
 }
@@ -114,8 +116,9 @@ conf_get_color ( const char *key, Fl_Color def )
 
 /* sets the configured default */
 int
-Fl_Theme::load_default ( void )
+Fl_Theme::load_default ( std::string path )
 {
+    s_path = path;
     std::string name(conf_get( "theme", "clean" ));
     
     if( !strcmp(name.c_str(), "Cairo") || !strcmp(name.c_str(), "Vector" ))
@@ -241,6 +244,6 @@ Fl_Color_Scheme::set ( const char *name )
     return 0;
 }
 
-void fl_apply_theme() {
-  Fl_Theme::load_default();
+void fl_apply_theme(std::string path) {
+  Fl_Theme::load_default(path);
 }
