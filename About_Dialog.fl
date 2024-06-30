@@ -1,20 +1,20 @@
 # data file for the Fltk User Interface Designer (fluid)
-version 1.0300 
-header_name {.H} 
+version 1.0309
+header_name {.H}
 code_name {.C}
 decl {\#include <FL/Fl.H>} {private local
-} 
+}
 
 decl {\#include <FL/Fl_Shared_Image.H>} {private local
-} 
+}
 
 decl {\#include <FL/filename.H>} {private local
-} 
+}
 
 Function {open_url( const char *url )} {open return_type void
 } {
   code {fl_open_uri( url );} {}
-} 
+}
 
 class About_Dialog {open
 } {
@@ -41,8 +41,8 @@ if ( logo_box->image() )
 {
 	((Fl_Shared_Image*)logo_box->image())->release();
 	logo_box->image( 0 );
-}} open
-      private xywh {1029 279 560 695} type Double visible
+}} open selected
+      private xywh {1233 256 560 695} type Double visible
     } {
       Fl_Tabs {} {open
         xywh {0 352 558 296}
@@ -61,7 +61,7 @@ if ( logo_box->image() )
         } {
           Fl_Box copyright {
             label COPYRIGHT
-            xywh {43 380 462 32} labeltype SHADOW_LABEL labelfont 1 labelsize 10
+            xywh {43 380 462 32} labelfont 1 labelsize 10
           }
           Fl_Box {} {
             label {This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
@@ -86,13 +86,13 @@ You should have received a copy of the GNU General Public License along with thi
       }
       Fl_Button website_url {
         label {https://github.com/Stazed/non-timeline-xt}
-        callback {open_url( o->label() );} selected
-        xywh {90 660 300 30} color 14 labeltype SHADOW_LABEL labelcolor 6
+        callback {open_url( o->label() );}
+        xywh {90 660 300 30} color 14 labelcolor 6
       }
       Fl_Box title {
         label TITLE
-        xywh {5 317 545 29} labeltype SHADOW_LABEL labelfont 3 labelsize 17
+        xywh {5 317 545 29} labelfont 3 labelsize 17
       }
     }
   }
-} 
+}
