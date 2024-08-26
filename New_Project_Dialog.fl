@@ -1,9 +1,10 @@
 # data file for the Fltk User Interface Designer (fluid)
-version 1.0300 
-header_name {.H} 
+version 1.0309
+header_name {.H}
 code_name {.C}
 comment {//
-// Copyright (C) 2008 Jonathan Moore Liles
+// Copyright (C) 2008-2021 Jonathan Moore Liles
+// Copyright (C) 2021- Stazed
 //
 // This program is free software; you can redistribute it and/or
 // modify it under the terms of the GNU General Public License
@@ -19,20 +20,20 @@ comment {//
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 //
-} {in_source in_header
-} 
+} {selected in_source in_header
+}
 
 decl {\#include <stdlib.h>} {private local
-} 
+}
 
 decl {\#include <string.h>} {private local
-} 
+}
 
 decl {\#include <stdio.h>} {private local
-} 
+}
 
 decl {\#include <FL/Fl_File_Chooser.H>} {private local
-} 
+}
 
 class New_Project_Dialog {open
 } {
@@ -54,7 +55,7 @@ while ( _window->shown() )
   Function {make_window()} {open
   } {
     Fl_Window _window {
-      label {New Project} open selected
+      label {New Project} open
       xywh {743 696 550 105} type Double modal visible
     } {
       Fl_File_Input _name {
@@ -115,7 +116,7 @@ while ( _window->shown() )
   } {
     code {return _default_path;} {}
   }
-} 
+}
 
 Function {new_project_chooser( char **default_path)} {open C return_type {char*}
 } {
@@ -129,4 +130,4 @@ if ( nsd.default_path() )
 	*default_path = nsd.default_path();
 
 return nsd.path;} {}
-} 
+}

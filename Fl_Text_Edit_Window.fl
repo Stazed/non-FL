@@ -1,9 +1,30 @@
 # data file for the Fltk User Interface Designer (fluid)
-version 1.0300 
-header_name {.H} 
+version 1.0309
+header_name {.H}
 code_name {.C}
+comment {//
+// Copyright (C) 2008-2021 Jonathan Moore Liles
+// Copyright (C) 2021- Stazed
+//
+// This program is free software; you can redistribute it and/or
+// modify it under the terms of the GNU General Public License
+// as published by the Free Software Foundation; either version 2
+// of the License, or (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with this program; if not, write to the Free Software
+// Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+//
+} {selected in_source in_header
+}
+
 decl {\#include <string.h>} {private local
-} 
+}
 
 widget_class Fl_Text_Edit_Window {open
   xywh {377 295 355 410} type Double resizable
@@ -14,7 +35,7 @@ widget_class Fl_Text_Edit_Window {open
     label {<title>}
     xywh {5 7 345 28}
   }
-  Fl_Text_Editor text_editor {selected
+  Fl_Text_Editor text_editor {
     xywh {5 37 345 341} resizable
     code0 {o->buffer( new Fl_Text_Buffer );}
   }
@@ -32,7 +53,7 @@ widget_class Fl_Text_Edit_Window {open
       code0 {o->labeltype( FL_NO_LABEL );}
     }
   }
-} 
+}
 
 Function {fl_text_edit( const char *title, const char *button_text, const char *initial_text, int W = 355, int H = 410 )} {open C return_type {char *}
 } {
@@ -50,4 +71,4 @@ while ( tew.shown() )
 	Fl::wait();
 	
 return strdup( tew.text_editor->buffer()->text() );} {}
-} 
+}

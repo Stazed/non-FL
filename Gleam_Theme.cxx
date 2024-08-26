@@ -1,6 +1,8 @@
 
 /*******************************************************************************/
-/* Copyright (C) 2012 Jonathan Moore Liles                                     */
+/* Copyright (C) 2008-2021 Jonathan Moore Liles                                */
+/* Copyright (C) 2021- Stazed                                                  */
+/*                                                                             */
 /* Copyright (C) 2001-2005 by Colin Jones                                      */
 /*                                                                             */
 /* This program is free software; you can redistribute it and/or modify it     */
