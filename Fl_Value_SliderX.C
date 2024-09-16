@@ -87,20 +87,18 @@ Fl_Value_SliderX::Fl_Value_SliderX(int X, int Y, int W, int H, const char*l)
 void Fl_Value_SliderX::draw() {
 
     int sxx = x(), syy = y(), sww = w(), shh = h();
-    int bxx = x(), byy = y(), bww = w(), bhh = h();
     if (horizontal()) {
         input.resize(x(), y(), 35, h());
-        bww = 35; sxx += 35; sww -= 35;
+        sxx += 35; sww -= 35;
     } else {
         input.resize(x(), y(), w(), 25 );
-        syy += 25; bhh = 25; shh -= 25;
+        syy += 25; shh -= 25;
     }
     if (damage()&FL_DAMAGE_ALL) draw_box(box(),sxx,syy,sww,shh,color());
     Fl_SliderX::draw(sxx+Fl::box_dx(box()),
                      syy+Fl::box_dy(box()),
                      sww-Fl::box_dw(box()),
                      shh-Fl::box_dh(box()));
-    draw_box(box(),bxx,byy,bww,bhh,color());
 
     if (damage()&~FL_DAMAGE_CHILD) input.clear_damage(FL_DAMAGE_ALL);
     input.box(box());
