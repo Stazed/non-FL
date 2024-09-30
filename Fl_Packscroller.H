@@ -116,7 +116,7 @@ public:
     virtual void
     draw ( void )
         {
-            if ( damage() & FL_DAMAGE_ALL )
+            if ( (damage() & FL_DAMAGE_ALL) || (damage() & FL_DAMAGE_SCROLL) )
             {
                 fl_rectf( x(), y(), w(), h(), color() );
             }
