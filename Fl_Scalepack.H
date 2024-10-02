@@ -23,10 +23,16 @@
 
 #include <FL/Fl_Group.H>
 
+#define MODULE_RESIZE_ADJUST 1
+
 class Fl_Scalepack : public Fl_Group
 {
 
     int _spacing;
+#ifdef MODULE_RESIZE_ADJUST
+    bool _adjust_gain;
+    bool _adjust_meter;
+#endif
 
 public:
 

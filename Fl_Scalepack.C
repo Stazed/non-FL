@@ -48,6 +48,10 @@ Fl_Scalepack::Fl_Scalepack ( int X, int Y, int W, int H, const char *L ) :
 {
     resizable( 0 );
     _spacing = 0;
+#ifdef MODULE_RESIZE_ADJUST
+    _adjust_gain = true;
+    _adjust_meter= true;
+#endif
 }
 
 void
@@ -57,7 +61,7 @@ Fl_Scalepack::resize ( int X, int Y, int W, int H )
      interferes with our own resizing method. */
     long dx = X - x();
     long dy = Y - y();
-    
+
     bool r = W != w() || H != h();
 
     Fl_Widget::resize( X, Y, W, H );
@@ -167,7 +171,48 @@ Fl_Scalepack::draw ( void )
 
                 if (X != o->x() || Y != o->y() || W != o->w() || H != o->h() )
                 {
+#ifdef MODULE_RESIZE_ADJUST
+                    /* Some hacky stuff to get the correct initial sizing of the default gain slider
+                       and meter indicator. It seems to take two passes to get the final 
+                       correct size, but only shows the first pass. The difference between
+                       first and second pass is 17 (???). So on the first pass we adjust by
+                       adding the 17 that is needed to get the correct second pass. Otherwise
+                       the slider and meter will show different sizes on each strip. The user
+                       could manually trigger a redraw by resizing the mixer window or if
+                       enough strips are present, by moving the scroller. But this will
+                       set the initial visible size correctly */
+                    int mod_adjust = 0;
+
+                    if(_adjust_gain)
+                    {
+                        if(o->label())
+                        {
+                            if( !strcmp(o->label(), "@#GC") )
+                            {
+                              //  printf("H2 = %d: o->h() = %d: h()= %d\n", H, o->h(), h());
+                                mod_adjust = 17;
+                                _adjust_gain = false;
+                            }
+                        }
+                    }
+
+                    if(_adjust_meter)
+                    {
+                        if(o->label())
+                        {
+                            if( !strcmp(o->label(), "@#MI") )
+                            {
+                              //  printf("MIG-H2 = %d\n", H);
+                                mod_adjust = 17;
+                                _adjust_meter = false;
+                            }
+                        }
+                    }
+
+                    o->resize(X,Y,W,H + mod_adjust);
+#else
                     o->resize(X,Y,W,H);
+#endif
                     o->clear_damage(FL_DAMAGE_ALL);
                 }
 
