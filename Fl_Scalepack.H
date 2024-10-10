@@ -25,6 +25,11 @@
 
 #define MODULE_RESIZE_ADJUST 1
 
+#ifdef MODULE_RESIZE_ADJUST
+extern const char *GAIN_LABEL;
+extern const char *METER_LABEL;
+#endif
+
 class Fl_Scalepack : public Fl_Group
 {
 

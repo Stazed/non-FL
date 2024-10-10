@@ -43,6 +43,12 @@
 #include <FL/fl_draw.H>
 #include <stdio.h>
 
+#ifdef MODULE_RESIZE_ADJUST
+const int c_module_size_adjust = 17;
+const char *GAIN_LABEL = "@#GC";
+const char *METER_LABEL = "@#MI";
+#endif
+
 Fl_Scalepack::Fl_Scalepack ( int X, int Y, int W, int H, const char *L ) :
     Fl_Group( X, Y, W, H, L )
 {
@@ -175,10 +181,10 @@ Fl_Scalepack::draw ( void )
                     /* Some hacky stuff to get the correct initial sizing of the default gain slider
                        and meter indicator. It seems to take two passes to get the final 
                        correct size, but only shows the first pass. The difference between
-                       first and second pass is 17 (???). So on the first pass we adjust by
-                       adding the 17 that is needed to get the correct second pass. Otherwise
-                       the slider and meter will show different sizes on each strip. The user
-                       could manually trigger a redraw by resizing the mixer window or if
+                       first and second pass is 17 (c_module_size_adjust). So on the first pass
+                       we adjust by adding the 17 that is needed to get the correct second pass.
+                       Otherwise the slider and meter will show different sizes on each strip.
+                       The user could manually trigger a redraw by resizing the mixer window or if
                        enough strips are present, by moving the scroller. But this will
                        set the initial visible size correctly */
                     int mod_adjust = 0;
@@ -187,10 +193,10 @@ Fl_Scalepack::draw ( void )
                     {
                         if(o->label())
                         {
-                            if( !strcmp(o->label(), "@#GC") )
+                            if( !strcmp(o->label(), GAIN_LABEL) )
                             {
                               //  printf("H2 = %d: o->h() = %d: h()= %d\n", H, o->h(), h());
-                                mod_adjust = 17;
+                                mod_adjust = c_module_size_adjust;
                                 _adjust_gain = false;
                             }
                         }
@@ -200,10 +206,10 @@ Fl_Scalepack::draw ( void )
                     {
                         if(o->label())
                         {
-                            if( !strcmp(o->label(), "@#MI") )
+                            if( !strcmp(o->label(), METER_LABEL) )
                             {
                               //  printf("MIG-H2 = %d\n", H);
-                                mod_adjust = 17;
+                                mod_adjust = c_module_size_adjust;
                                 _adjust_meter = false;
                             }
                         }
