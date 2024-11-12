@@ -73,15 +73,14 @@ public:
 
     const char *name ( void ) const { return _name; }
 
-    Fl_Color_Scheme ( const char *name, Fl_Color background, Fl_Color background2, Fl_Color foreground, Fl_Color selection )
-        {
-            _bg = background;
-            _bg2 = background2;
-            _fg = foreground;
-            _sel = selection;
-            _name = name;
-
-        }
+    Fl_Color_Scheme ( const char *name, Fl_Color background, Fl_Color background2, Fl_Color foreground, Fl_Color selection ) :
+        next(NULL),
+        _bg(background),
+        _bg2(background2),
+        _fg(foreground),
+        _sel(selection),
+        _name(name)
+    { }
 
     static void add ( Fl_Color_Scheme *td );
     static Fl_Color_Scheme **get ( void );
@@ -111,13 +110,13 @@ public:
     const char *description ( void ) { return _description; }
     const char *author ( void ) { return _author; }
 
-    Fl_Theme( const char *name, const char *description, const char *author, void (*init_func)(void) )
-        {
-            _name = name;
-            _description = description;
-            _author = author;
-            _init_func = init_func;
-        }
+    Fl_Theme( const char *name, const char *description, const char *author, void (*init_func)(void) ) :
+        next(NULL),
+        _name(name),
+        _description(description),
+        _author(author),
+        _init_func(init_func)
+    {  }
 
     static void save ( void );
     static void add ( Fl_Theme *td );
