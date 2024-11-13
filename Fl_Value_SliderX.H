@@ -42,9 +42,9 @@ private:
   virtual void value_damage(); // cause damage() due to value() changing
 
 protected:
-    void draw();
+    void draw() override;
 public:
-    int handle(int);
+    int handle(int) override;
     Fl_Value_SliderX(int x,int y,int w,int h, const char *l = 0);
     virtual ~Fl_Value_SliderX ( );
 

@@ -36,7 +36,7 @@ public:
             H = fl_height();
         }
 
-    Fl_Labelpad_Group ( Fl_Widget *o ) : Fl_Group( 0, 0, 50, 50, 0 )
+    explicit Fl_Labelpad_Group ( Fl_Widget *o ) : Fl_Group( 0, 0, 50, 50, 0 )
         {
             resizable( 0 );
 
