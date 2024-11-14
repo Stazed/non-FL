@@ -81,7 +81,7 @@ public:
     virtual
     ~Fl_Blink_Button ()
         {
-            if ( value() )
+            if ( Fl_Blink_Button::value() )
                 Fl::remove_timeout( update_cb, this );
         }
     
