@@ -39,7 +39,7 @@ class FL_EXPORT Fl_Value_SliderX : public Fl_SliderX {
 private:
   char soft_;
   static void input_cb(Fl_Widget*,void*);
-  virtual void value_damage(); // cause damage() due to value() changing
+  virtual void value_damage() override ; // cause damage() due to value() changing
 
 protected:
     void draw() override;
