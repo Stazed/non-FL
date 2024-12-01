@@ -122,7 +122,7 @@ public:
         {
             bool b = v;
             
-            if ( b != value() )
+            if ( b != (bool) value() )
             {
                 if ( b )
                 {
@@ -144,7 +144,7 @@ public:
             }
         }
 
-    virtual float value ( void ) { return (bool)Fl_Button::value(); }
+    virtual float value ( void ) { return Fl_Button::value(); }
 
     virtual void
     draw ( void )
