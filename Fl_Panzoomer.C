@@ -346,7 +346,6 @@ Fl_Panzoomer::handle ( int m, int X, int Y, int W, int H )
                 return 1;
             }
 
-            return 0;
             break;
         }
         case FL_RELEASE:
