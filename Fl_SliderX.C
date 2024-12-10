@@ -168,9 +168,14 @@ Fl_SliderX::slider_value ( int X, int w )
   double A = minimum();
   double B = maximum();
   bool flip = B < A;
-  if (flip) {A = B; B = minimum();}
+  if (flip)
+  {
+      A = B;
+      B = minimum();
+      X = w-X;
+  }
 //  if (!horizontal()) flip = !flip;
-  if (flip) X = w-X;
+//  if (flip) X = w-X;
   double fraction = double(X)/w;
   if (fraction <= 0) return A;
   if (fraction >= 1) return B;
