@@ -20,7 +20,7 @@ comment {//
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 //
-} {selected in_source in_header
+} {in_source in_header
 }
 
 decl {\#include "Fl_Theme.H"} {public global
@@ -75,7 +75,7 @@ return Fl_Button::handle( m );} {}
 }
 
 widget_class Fl_Theme_Chooser {
-  label Theme open
+  label Theme open selected
   xywh {610 327 435 380} type Double
   class Fl_Double_Window visible
 } {
@@ -172,23 +172,29 @@ o->window()->redraw();}
   code {{
 Fl_Theme **ta = Fl_Theme::get();
 
-for ( Fl_Theme **t = ta; *t; t++ )
-    theme_choice->add( (*t)->name() );
+    if ( ta != NULL )
+    {
+        for ( Fl_Theme **t = ta; *t; t++ )
+            theme_choice->add( (*t)->name() );
 
-free( ta );
+        free( ta );
 
-const Fl_Menu_Item *item = theme_choice->find_item( Fl_Theme::current()->name() );
+        const Fl_Menu_Item *item = theme_choice->find_item( Fl_Theme::current()->name() );
 
-theme_choice->value( item );
+        theme_choice->value( item );
+    }
 }
 
 {
 Fl_Color_Scheme **ta = Fl_Color_Scheme::get();
 
-for ( Fl_Color_Scheme **t = ta; *t; t++ )
-    color_scheme_choice->add( (*t)->name() );
+    if ( ta != NULL )
+    {
+        for ( Fl_Color_Scheme **t = ta; *t; t++ )
+            color_scheme_choice->add( (*t)->name() );
 
-free( ta );
+        free( ta );
+    }
 }} {}
 }
 

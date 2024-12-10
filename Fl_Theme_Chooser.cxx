@@ -224,23 +224,29 @@ this->when(FL_WHEN_RELEASE);
 {
 Fl_Theme **ta = Fl_Theme::get();
 
-for ( Fl_Theme **t = ta; *t; t++ )
-    theme_choice->add( (*t)->name() );
+    if ( ta != NULL )
+    {
+        for ( Fl_Theme **t = ta; *t; t++ )
+            theme_choice->add( (*t)->name() );
 
-free( ta );
+        free( ta );
 
-const Fl_Menu_Item *item = theme_choice->find_item( Fl_Theme::current()->name() );
+        const Fl_Menu_Item *item = theme_choice->find_item( Fl_Theme::current()->name() );
 
-theme_choice->value( item );
+        theme_choice->value( item );
+    }
 }
 
 {
 Fl_Color_Scheme **ta = Fl_Color_Scheme::get();
 
-for ( Fl_Color_Scheme **t = ta; *t; t++ )
-    color_scheme_choice->add( (*t)->name() );
+    if ( ta != NULL )
+    {
+        for ( Fl_Color_Scheme **t = ta; *t; t++ )
+            color_scheme_choice->add( (*t)->name() );
 
-free( ta );
+        free( ta );
+    }
 }
 end();
 }

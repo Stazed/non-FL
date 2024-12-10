@@ -48,6 +48,9 @@ Fl_Theme::get ( void )
 {
     Fl_Theme **r = (Fl_Theme**) malloc( sizeof( Fl_Theme* ) * ( total + 1 ) );
 
+    if ( r == NULL )
+        return NULL;
+
     int i = 0;
     for ( Fl_Theme *t = first; t; t = t->next, i++ )
         r[i] = t;
@@ -191,6 +194,9 @@ Fl_Color_Scheme **
 Fl_Color_Scheme::get ( void )
 {
     Fl_Color_Scheme **r = (Fl_Color_Scheme**) malloc( sizeof( Fl_Color_Scheme* ) * ( total + 1 ) );
+
+    if ( r == NULL )
+        return NULL;
 
     int i = 0;
     for ( Fl_Color_Scheme *t = first; t; t = t->next, i++ )
