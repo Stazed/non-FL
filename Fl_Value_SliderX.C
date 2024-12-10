@@ -78,7 +78,7 @@ Fl_Value_SliderX::Fl_Value_SliderX(int X, int Y, int W, int H, const char*l)
     input.callback(input_cb, this);
     input.when(FL_WHEN_ENTER_KEY);
     align(FL_ALIGN_LEFT);
-    value_damage();
+    Fl_Value_SliderX::value_damage();
     textsize(9);
     set_flag(SHORTCUT_LABEL);
 
