@@ -28,6 +28,7 @@
 #include <FL/Fl.H>
 #include <FL/Fl_Window.H>
 #include <FL/Fl_Input.H>
+#include <cstdlib>
 
 class Fl_Sometimes_Input : public Fl_Input
 {

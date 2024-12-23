@@ -21,6 +21,7 @@
 
 #include <FL/Fl.H>
 #include <FL/fl_draw.H>
+#include <FL/Fl_Group.H>
 
 void
 draw_focus_frame ( int x, int y, int w, int h, Fl_Color c )
