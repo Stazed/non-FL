@@ -126,7 +126,7 @@ Fl_Theme::load_default ( std::string path )
     s_path = path;
     std::string name(conf_get( "theme", "clean" ));
     
-    if( !strcmp(name.c_str(), "Cairo") || !strcmp(name.c_str(), "Vector" ))
+    if( !strcmp(name.c_str(), "Cairo") /*|| !strcmp(name.c_str(), "Vector" ) */)
         name = "clean";
 
     int rv = set( name.c_str() );
