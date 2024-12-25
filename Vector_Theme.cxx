@@ -58,10 +58,10 @@ static void rect_path ( float x, float y, float w, float h, Fl_Color bc, double 
     fl_color( bc );
 
     fl_begin_line();
-    fl_arc(x, y, radius, radius, 90.0, 180.0);
-    fl_arc(x, y + h - radius, radius, radius, 180.0, 270.0);
-    fl_arc(x + w - radius, y + h - radius, radius, radius, 270.0, 360.0);
-    fl_arc(x + w - radius, y, radius, radius, 0.0, 90.0);
+    fl_arc(x, y, radius, radius, 90.0, 180.0);  // top left
+    fl_arc(x, y + h - radius, radius, radius, 180.0, 270.0);    // bottom left
+    fl_arc(x + w - radius - 1, y + h - radius, radius, radius, 270.0, 360.0); // top right
+    fl_arc(x + w - radius - 1, y, radius, radius, 0.0, 90.0);   // bottom right
     fl_end_line();
     
     fl_xyline(x + 3, y, x + w - 3);     // top
@@ -70,7 +70,7 @@ static void rect_path ( float x, float y, float w, float h, Fl_Color bc, double 
     fl_xyline(x + 3, y + h - 1, x + w - 3); // bottom
 }
 
-static void rect_pathf ( float x, float y, float w, float h, Fl_Color bc, double radius )
+static void rect_pathf ( float x, float y, float w, float h, Fl_Color bc, double /*radius*/)
 {
     x+= 0.5f;
     y+= 0.5f;
@@ -78,13 +78,8 @@ static void rect_pathf ( float x, float y, float w, float h, Fl_Color bc, double
     h-=1;
 
     fl_color( bc );
-
+    
     fl_begin_polygon();
-    fl_arc(x, y, radius, radius, 90.0, 180.0);
-    fl_arc(x, y + h - radius, radius, radius, 180.0, 270.0);
-    fl_arc(x + w - radius, y + h - radius, radius, radius, 270.0, 360.0);
-    fl_arc(x + w - radius, y, radius, radius, 0.0, 90.0);
-
     fl_vertex(x, y);
     fl_vertex(x + w, y);
     fl_vertex(x + w, y + h);
@@ -92,7 +87,7 @@ static void rect_pathf ( float x, float y, float w, float h, Fl_Color bc, double
     fl_end_polygon();
 }
 
-static void draw_rect(int x, int y, int w, int h, Fl_Color bc, double radius = 8 )
+static void draw_rect(int x, int y, int w, int h, Fl_Color bc, double radius = 6 )
 {
     cairo_color( bc );
     rect_path( x, y, w, h, bc, radius );
