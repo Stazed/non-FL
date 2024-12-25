@@ -22,9 +22,6 @@
 #include "../FL/Fl_Theme_Chooser.H"
 #include <FL/Fl_Color_Chooser.H>
 #include <FL/Fl_Double_Window.H>
-#include "Clean_Theme.H"
-#include "Crystal_Theme.H"
-#include "Gleam_Theme.H"
 
 Fl_Color_Button::Fl_Color_Button( int X, int Y, int W, int H, const char *L ) : Fl_Button( X, Y, W, H, L ) {
 }

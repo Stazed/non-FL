@@ -21,7 +21,7 @@
 
 #include "Fl_Theme.H"
 
-//#include "FL/Cairo_Theme.H"
+#include "GTK_Theme.H"
 #include "Crystal_Theme.H"
 #include "Gleam_Theme.H"
 #include "Clean_Theme.H"
@@ -36,7 +36,7 @@ void fl_register_themes ( std::string path )
 
     themes_registered = 1;
 
-//    init_cairo_theme();
+    init_gtk_theme();
     init_clean_theme();
     init_crystal_theme();
     init_gleam_theme();

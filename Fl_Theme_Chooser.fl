@@ -35,15 +35,6 @@ decl {\#include <FL/Fl_Color_Chooser.H>} {private local
 decl {\#include <FL/Fl_Double_Window.H>} {private local
 }
 
-decl {\#include "Clean_Theme.H"} {private global
-}
-
-decl {\#include "Crystal_Theme.H"} {private global
-}
-
-decl {\#include "Gleam_Theme.H"} {private global
-}
-
 class Fl_Color_Button {open : {public Fl_Button}
 } {
   Function {Fl_Color_Button( int X, int Y, int W, int H, const char *L = 0 ) : Fl_Button( X, Y, W, H, L )} {open
