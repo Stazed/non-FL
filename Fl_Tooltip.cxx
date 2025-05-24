@@ -25,7 +25,7 @@
 //     http://www.fltk.org/str.php
 //
 
-#if defined(FLTK_SUPPORT) || defined (FLTK14_SUPPORT)
+#if defined(FLTK_SUPPORT)
 
 #include "Fl_Tooltip.H"
 #include <FL/fl_draw.H>

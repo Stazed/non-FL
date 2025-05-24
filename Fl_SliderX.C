@@ -99,7 +99,7 @@ Fl_SliderX::draw ( int X, int Y, int W, int H)
         else
             fl_translate( xsl, ysl + (hh/2) );
       
-#if defined(FLTK_SUPPORT) || defined (FLTK14_SUPPORT)
+#if defined(FLTK_SUPPORT)
         fl_color( fl_color_average(FL_BACKGROUND_COLOR, FL_WHITE, .5f) );
 #else
         fl_color( fl_color_add_alpha( FL_WHITE, 127 ));

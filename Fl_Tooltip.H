@@ -28,7 +28,7 @@
 /* \file
    Fl_Tooltip widget . */
 
-#if defined(FLTK_SUPPORT) || defined (FLTK14_SUPPORT)
+#if defined(FLTK_SUPPORT)
 
 #ifndef Fl_Tooltip_H
 #define Fl_Tooltip_H
