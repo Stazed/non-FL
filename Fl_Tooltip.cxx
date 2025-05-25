@@ -33,6 +33,7 @@
 
 #include <stdio.h>
 #include <string.h>	// strdup()
+#include <cstdlib>	// free()
 
 float		Fl_Tooltip::delay_ = 1.0f;
 float		Fl_Tooltip::hoverdelay_ = 0.2f;

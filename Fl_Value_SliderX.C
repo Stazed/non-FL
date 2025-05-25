@@ -24,6 +24,7 @@
 
 #include <FL/Fl.H>
 #include <FL/fl_draw.H>
+#include <FL/Fl_Group.H>
 #include <math.h>
 
 void Fl_Value_SliderX::input_cb(Fl_Widget*, void* v) {
