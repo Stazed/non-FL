@@ -20,7 +20,11 @@
 /*******************************************************************************/
 
 #include <FL/Fl.H>
+#ifdef FLTK_SUPPORT
+#include <FL/platform.H>
+#else
 #include <FL/x.H>
+#endif
 #include <FL/fl_draw.H>
 
 #include "Fl_Theme.H"
