@@ -68,28 +68,17 @@ static void rect_path ( float x, float y, float w, float h, Fl_Color bc, double 
     fl_arc(x + w - radius - 1, y, radius, radius, 0.0, 90.0);   // bottom right
     fl_end_line();
 
-#ifdef FLTK_VERSION_1_4
     fl_xyline(x + 3, y, x + w - 4);     // top
     fl_yxline(x, y + 2, y + h - 4);     // left
     fl_yxline(x + w - 2, y + 2, y + h - 4); // right
     fl_xyline(x + 3, y + h - 1, x + w - 4); // bottom
-#else
-    fl_xyline(x + 3, y, x + w - 3);     // top
-    fl_yxline(x, y + 2, y + h - 4);     // left
-    fl_yxline(x + w - 1, y + 2, y + h - 4); // right
-    fl_xyline(x + 3, y + h - 1, x + w - 3); // bottom
-#endif
 }
 
 static void rect_pathf ( float x, float y, float w, float h, Fl_Color bc, double /*radius*/)
 {
     x+= 0.5f;
     y+= 0.5f;
-#ifdef FLTK_VERSION_1_4
     w-=2;
-#else
-    w-=1;
-#endif
     h-=1;
 
     fl_color( bc );
