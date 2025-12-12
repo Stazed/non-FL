@@ -67,18 +67,29 @@ static void rect_path ( float x, float y, float w, float h, Fl_Color bc, double 
     fl_arc(x + w - radius - 1, y + h - radius, radius, radius, 270.0, 360.0); // top right
     fl_arc(x + w - radius - 1, y, radius, radius, 0.0, 90.0);   // bottom right
     fl_end_line();
-    
+
+#ifdef FLTK_VERSION_1_4
+    fl_xyline(x + 3, y, x + w - 4);     // top
+    fl_yxline(x, y + 2, y + h - 4);     // left
+    fl_yxline(x + w - 2, y + 2, y + h - 4); // right
+    fl_xyline(x + 3, y + h - 1, x + w - 4); // bottom
+#else
     fl_xyline(x + 3, y, x + w - 3);     // top
     fl_yxline(x, y + 2, y + h - 4);     // left
     fl_yxline(x + w - 1, y + 2, y + h - 4); // right
     fl_xyline(x + 3, y + h - 1, x + w - 3); // bottom
+#endif
 }
 
 static void rect_pathf ( float x, float y, float w, float h, Fl_Color bc, double /*radius*/)
 {
     x+= 0.5f;
     y+= 0.5f;
+#ifdef FLTK_VERSION_1_4
+    w-=2;
+#else
     w-=1;
+#endif
     h-=1;
 
     fl_color( bc );
@@ -109,8 +120,8 @@ static void draw_rectf(int x, int y, int w, int h, Fl_Color bc , double radius =
 
 static void up_box(int x, int y, int w, int h, Fl_Color bc)
 {
-    draw_rectf( x + 2, y + 2, w - 4, h - 4, interior_color( bc ) );
-    draw_rect( x+1, y+1, w-2, h-2, border_color( bc ) );
+    draw_rectf( x + 2, y + 2, w - 2, h - 4, interior_color( bc ) );
+    draw_rect( x+1, y+1, w, h-2, border_color( bc ) );
 }
 
 static void up_frame(int x, int y, int w, int h, Fl_Color bc)
@@ -125,12 +136,12 @@ static void down_frame(int x, int y, int w, int h, Fl_Color bc)
 
 static void down_box(int x, int y, int w, int h, Fl_Color bc)
 {
-    draw_rectf( x + 2, y + 2, w - 4 , h - 4,
+    draw_rectf( x + 2, y + 2, w - 2 , h - 4,
 		FL_BACKGROUND_COLOR == bc || FL_BACKGROUND2_COLOR == bc
 		? fl_darker(interior_color(bc))
 		: interior_color( bc ) );
 
-    draw_rect( x + 1, y + 1 , w - 2, h - 2, bc  ); 
+    draw_rect( x + 1, y + 1 , w, h - 2, bc  ); 
 }
 
 static void border_box(int x, int y, int w, int h, Fl_Color bc)
