@@ -100,7 +100,11 @@ static void draw_rect(int x, int y, int w, int h, Fl_Color bc, double radius = 6
 static void draw_rectf(int x, int y, int w, int h, Fl_Color bc , double radius = 8  )
 {
     cairo_color( bc );
+#ifdef FLTK_VERSION_1_4
+    rect_pathf( x - 1, y - 1, w, h, bc, radius );
+#else
     rect_pathf( x, y, w, h, bc, radius );
+#endif
 }
 
 static void up_box(int x, int y, int w, int h, Fl_Color bc)
