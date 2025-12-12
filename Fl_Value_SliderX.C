@@ -53,7 +53,11 @@ void Fl_Value_SliderX::value_damage() {
     char buf[128];
     format(buf);
     input.value(buf);
+#ifdef FLTK_VERSION_1_4
+    input.mark(input.insert_position()); // turn off selection highlight
+#else
     input.mark(input.position()); // turn off selection highlight
+#endif
     redraw();
 }
 
