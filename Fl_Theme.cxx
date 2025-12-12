@@ -67,8 +67,12 @@ Fl_Preferences *prefs ( void )
     char path[512];
 
     snprintf( path, sizeof(path), "%s/.config/%s", getenv("HOME" ), s_path.c_str() );
-    
+
+#ifdef FLTK_VERSION_1_4
+    Fl_Preferences *p = new Fl_Preferences( path, "FLTK", "theme", Fl_Preferences::Root::USER_L );
+#else
     Fl_Preferences *p = new Fl_Preferences( path, "FLTK", "theme" );
+#endif
 
     return p;
 }

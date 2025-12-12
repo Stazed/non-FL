@@ -273,8 +273,7 @@ Fl_Panzoomer::handle ( int m, int X, int Y, int W, int H )
                  Fl::event_button1() )
                 drag = true;
 
-            /* fallthrough */
-//            return 1;
+            //[[fallthrough]]; // Explicitly marks intentional fallthrough -std=c++17
         }
         case FL_DRAG:
         {
