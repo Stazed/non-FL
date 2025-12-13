@@ -101,8 +101,12 @@ static void draw_rectf(int x, int y, int w, int h, Fl_Color bc , double radius =
 {
     cairo_color( bc );
 #ifdef FLTK_VERSION_1_4
+#ifdef FLTK_USE_WAYLAND
     rect_pathf( x - 1, y - 1, w, h, bc, radius );
 #else
+    rect_pathf( x, y, w, h, bc, radius );
+#endif
+#else   // FLTK version 1.3.x
     rect_pathf( x, y, w, h, bc, radius );
 #endif
 }
