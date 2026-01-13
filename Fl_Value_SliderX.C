@@ -27,6 +27,8 @@
 #include <FL/Fl_Group.H>
 #include <math.h>
 
+extern bool dirty_slider;   // defined in non-mixer-xt Chain.C
+
 void Fl_Value_SliderX::input_cb(Fl_Widget*, void* v) {
     Fl_Value_SliderX& t = *(Fl_Value_SliderX*)v;
     double nv;
@@ -183,6 +185,9 @@ int Fl_Value_SliderX::handle(int event) {
             v = soft()?softclamp(v):clamp(v);
             handle_drag(v);
             value_damage();
+            // NMXT global dirty flag
+            if ( !dirty_slider)
+                dirty_slider = true;
             return 1;
         }
         case FL_RELEASE:

@@ -25,6 +25,8 @@
 
 #include <math.h>
 
+extern bool dirty_slider;   // defined in non-mixer-xt Chain.C
+
 void
 Fl_SliderX::draw ( int X, int Y, int W, int H)
 {
@@ -258,6 +260,9 @@ int Fl_SliderX::handle(int event, int X, int Y, int W, int H) {
               goto try_again;
           }
       }
+      // NMXT global dirty flag
+      if ( !dirty_slider)
+        dirty_slider = true;
 
       handle_drag(clamp(v));
     } return 1;
