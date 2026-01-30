@@ -44,7 +44,7 @@
 #include <stdio.h>
 
 #ifdef MODULE_RESIZE_ADJUST
-const int c_module_size_adjust = 17;
+const int c_module_size_adjust = Fl::scrollbar_size() + 1;
 const char *GAIN_LABEL = "@#GC";
 const char *METER_LABEL = "@#MI";
 #endif
