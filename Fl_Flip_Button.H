@@ -38,12 +38,60 @@ class Fl_Flip_Button : public Fl_Button
     char *_off;
     char *_on;
 
+    static char *
+    dup_range( const char *begin, const char *end )
+        {
+            if ( !begin || !end || end < begin )
+                return NULL;
+
+            size_t len = (size_t)( end - begin );
+            char *s = (char*)malloc( len + 1 );
+
+            if ( !s )
+                return NULL;
+
+            memcpy( s, begin, len );
+            s[len] = '\0';
+
+            return s;
+        }
+
+    static char *
+    dup_cstr( const char *s )
+        {
+            if ( !s )
+                return NULL;
+
+            size_t len = strlen( s );
+            char *out = (char*)malloc( len + 1 );
+
+            if ( !out )
+                return NULL;
+
+            memcpy( out, s, len + 1 );
+
+            return out;
+        }
+
 public:
 
     Fl_Flip_Button ( int X, int Y, int W, int H, const char *L = 0 ) :
-        Fl_Button( X, Y, W, H, 0 )
+        Fl_Button( X, Y, W, H, 0 ),
+        _off( NULL ),
+        _on( NULL )
         {
-            sscanf( L, "%m[^/]/%ms", &_off, &_on );
+            if ( L )
+            {
+                const char *slash = strchr( L, '/' );
+
+                if ( slash )
+                {
+                    _off = dup_range( L, slash );
+                    _on  = dup_cstr( slash + 1 );
+                }
+                else
+                    _off = dup_cstr( L );
+            }
 
             type( FL_TOGGLE_BUTTON );
         }
